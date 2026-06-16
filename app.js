@@ -5,6 +5,10 @@ app.set("view engine","ejs");
 const path= require("path");
 app.use(express.static(path.join(__dirname, "public")));
 app.engine("ejs", ejsMate);
+const mongoose=require("mongoose"); 
+const connectionDb=require("./model/connection");
+const userModel=require("./model/user");
+connectionDb();
 
 let port=8080;
 
