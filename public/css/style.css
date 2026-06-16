@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f4f8;
+}
+
+/* NAVBAR */
+nav {
+    padding: 1rem 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+nav a {
+    margin-right: 1.5rem;
+    text-decoration: none;
+    color: #6b21a8;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #4c1d95;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+main h1 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+main p {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+/* UPLOAD BOX */
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background: #ffffff;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+}
+
+.upload-box:hover {
+    border-color: #6b21a8;
+}
+
+.upload-box input {
+    display: none;
+}
+
+.upload-box span {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+/* BUTTON */
+button {
+    padding: 0.75rem 2rem;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1e293b;
+}
+
+/* FOOTER */
+footer {
+    padding: 1rem 2rem;
+    background: #0f172a;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
