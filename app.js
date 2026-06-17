@@ -17,10 +17,10 @@ app.get("/",(req,res)=>{ // Route Route:
 })
 
 app.get("/login",(req,res)=>{
-    res.send("Login");
+    res.render("listings/login");
 })
 app.get("/signup",(req,res)=>{
-    res.send("Signup");
+    res.render("listings/create");
 })
 
 app.listen(port,()=>{
