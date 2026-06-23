@@ -10,8 +10,11 @@ const connectionDb=require("./model/connection");
 const userModel=require("./model/user");
 const bcrypt=require("bcrypt");
 const session=require("express-session");
+const multer=require('multer');
 connectionDb();
 app.use(express.urlencoded({ extended: true }));
+  const upload = multer({ dest: 'uploads/' });
+
 app.use(session({
     secret:"mySuperSecretKey2026"
 }));
@@ -76,6 +79,12 @@ app.get("/logout",(req,res)=>{
         res.send("You have already Logout");
     }
    
+})
+app.post("/upload",upload.single("resume")
+,(req,res)=>{
+    console.log(req.body);
+    console.log(req.file);
+    res.send("done");
 })
 
 app.listen(port,()=>{
