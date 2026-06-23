@@ -11,6 +11,7 @@ const userModel=require("./model/user");
 const bcrypt=require("bcrypt");
 const session=require("express-session");
 const multer=require('multer');
+const { PDFParse } = require('pdf-parse');
 connectionDb();
 app.use(express.urlencoded({ extended: true }));
   const upload = multer({ dest: 'uploads/' });
@@ -81,11 +82,46 @@ app.get("/logout",(req,res)=>{
    
 })
 app.post("/upload",upload.single("resume")
-,(req,res)=>{
-    console.log(req.body);
+,async(req,res)=>{
     console.log(req.file);
-    res.send("done");
+    const parser = new PDFParse({ url: `${req.file.path}` });
+    const result = await parser.getText();
+    const sections = {};
+const lines = result.text.split("\n");
+
+let currentSection = null;
+
+const validSections = [
+    "SUMMARY",
+    "ABOUT ME",
+    "PROFILE",
+    "SKILLS",
+    "TECHNICAL SKILLS",
+    "PROJECTS",
+    "EXPERIENCE",
+    "EDUCATION"
+];
+
+for (let line of lines) {
+    line = line.trim();
+
+    if (!line) continue;
+
+    if (validSections.includes(line.toUpperCase())) {
+        currentSection = line.toUpperCase();
+        sections[currentSection] = "";
+    }
+    else if (currentSection) {
+        sections[currentSection] += line + " ";
+    }
+}
+
+console.log(sections);
 })
+
+
+
+
 
 app.listen(port,()=>{
     console.log("Work");
